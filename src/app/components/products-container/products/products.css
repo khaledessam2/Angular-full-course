@@ -1,0 +1,21 @@
+.product-img {
+  height: 230px;
+  object-fit: cover;
+}
+
+@media (min-width:1000px) {
+  .product-img{
+    object-fit: contain;
+  }
+}
+
+.cursor-pointer{
+
+  cursor: pointer;
+}
+
+.heightlight-product{
+    transform: scale(1.05);
+    transition-duration: 0.1s;
+}
+

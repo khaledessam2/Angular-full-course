@@ -1,0 +1,53 @@
+<div class="container py-5 border rounded-4">
+  <div class="row g-5 px-4">
+    <!-- Product Image -->
+    <div class="col-lg-6">
+        <img [src]="product.image" [alt]="product.name" class="img-fluid rounded" />
+    </div>
+    <!-- Product Info -->
+    <div class="col-lg-6">
+      <h2 class="fw-bold">{{ product.name }}</h2>
+      <div class="my-3">
+        <span class="badge bg-success fs-6"> ★ {{ product.rating }} </span>
+        <span class="text-muted ms-2"> ({{ product.reviews }} Reviews) </span>
+      </div>
+      <h3 class="text-danger fw-bold">${{ product.price }}</h3>
+      <p class="text-muted mt-3">
+        {{ product.description }}
+      </p>
+      <hr />
+      <!-- Category -->
+      <p>
+        <strong>Category :</strong>
+        {{ product.category }}
+      </p>
+      <!-- Stock -->
+      <p>
+        <strong>Status :</strong>
+        <span class="badge ms-2" [NgClassDir]="{'bg-success' : product.stock , 'bg-danger' : !product.stock}">
+          {{ product.stock ? 'In Stock' : 'Out of Stock' }}
+        </span>
+      </p>
+      <!-- Quantity -->
+      <div class="d-flex align-items-center mb-4">
+        <label class="me-3 fw-semibold">Quantity</label>
+        <input type="number" class="form-control w-25" min="1" [(ngModel)]="quantity" />
+      </div>
+      <!-- Buttons -->
+      <div class="d-flex gap-3" *ngIf="product.is_in_inventory; else notInInventory">
+        <button class="btn btn-danger btn-lg" HoverDirective >Add to Cart</button>
+        <button class="btn btn-outline-dark btn-lg" >Buy Now</button>
+      </div>
+      <ng-template #notInInventory>
+        <button class="btn btn-success btn-lg"> Notify Me</button>
+      </ng-template>
+    </div>
+  </div>
+  <!-- Description -->
+  <div class="mt-4 px-4">
+    <h4>Product Description</h4>
+    <p class="text-muted">
+      {{ product.longDescription }}
+    </p>
+  </div>
+</div>
