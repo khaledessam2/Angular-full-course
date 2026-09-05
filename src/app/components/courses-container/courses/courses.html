@@ -1,0 +1,33 @@
+<app-filter
+  [All]="AllCount"
+  [Free]="FreeCount"
+  [premium]="PremiumCount"
+  (SelectedRadioButton)="OnFilterChanged($event)"
+></app-filter>
+
+<p *ngIf="filterCourses.length === 0" class="text-center text-muted my-4">
+  No courses match your filter.
+</p>
+<div class="row g-3">
+  <div appHeighlight class="col-sm-6 col-md-4 col-lg-3 cursor-pointer d-flex" *ngFor="let Course of filterCourses; let i = index">
+    <div class="card h-80" [DisabledProduct]="Course.is_in_inventory">
+      <img [src]="Course.image" class="card-img-top product-img" [alt]="Course.name" />
+      <div class="card-body d-flex flex-column">
+        <h3 [SetBackground]="{'textColor' : 'blue' , 'FontWeight' : '700'}" class="fs-5">{{ Course.name }}</h3>
+        <p class="flex-grow-1">{{ Course.description }}</p>
+        <div class="d-flex align-items-center justify-content-between">
+          <span [ngStyleDir]="{ fontWeight: 'bold', color : Course.is_in_inventory ? 'green' : 'red' }">
+            {{ Course.is_in_inventory ? 'Available in stock' : 'Not Available in stock' }}
+          </span>
+          <span [ngStyle]="{ fontWeight: 'bold', color: Course.price === 'Free' ? 'red' : 'black' }">
+            {{ Course.price }}
+          </span>
+        </div>
+        <div class="d-flex align-items-center gap-2 mt-3">
+          <button class="btn btn-primary">Buy</button>
+          <button class="btn btn-success" (click)="GoToDetails(Course.id)">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

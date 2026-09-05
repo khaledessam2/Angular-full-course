@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-products-container',
+  selector: 'app-Courses-container',
   standalone: false,
-  templateUrl: './products-container.html',
-  styleUrl: './products-container.css',
+  templateUrl: './courses-container.html',
+  styleUrl: './courses-container.css',
 })
-export class ProductsContainer {
+export class CoursesContainer {
   FilterText : string = '';
   onFilter(event : string){
     this.FilterText = event ;

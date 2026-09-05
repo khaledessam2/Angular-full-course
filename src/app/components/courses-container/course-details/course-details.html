@@ -1,0 +1,82 @@
+<div class="container py-5 border rounded-4 my-5">
+  <div class="row g-5 px-4">
+    <!-- Product Image -->
+    <div class="col-lg-6">
+        <img [src]="SelectedCourse?.image" [alt]="SelectedCourse?.name" class="img-fluid rounded" />
+    </div>
+    <!-- Product Info -->
+    <div class="col-lg-6">
+      <h2 class="fw-bold">{{ SelectedCourse?.name }}</h2>
+      <div class="my-3">
+        <span class="badge bg-success fs-6"> ★ {{ SelectedCourse?.rating }} </span>
+        <span class="text-muted ms-2"> ({{ SelectedCourse?.reviews }} Reviews) </span>
+      </div>
+      <h3 class="text-danger fw-bold">${{ SelectedCourse?.price }}</h3>
+      <p class="text-muted mt-3">
+        {{ SelectedCourse?.description }}
+      </p>
+      <hr />
+      <!-- Category -->
+      <p>
+        <strong>Category :</strong>
+        {{ SelectedCourse?.category }}
+      </p>
+      <!-- Stock -->
+      <p>
+        <strong>Status :</strong>
+        <span class="badge ms-2" [NgClassDir]="{'bg-success' : SelectedCourse?.stock , 'bg-danger' : !SelectedCourse?.stock}">
+          {{ SelectedCourse?.stock ? 'In Stock' : 'Out of Stock' }}
+        </span>
+      </p>
+      <!-- Quantity -->
+      <div class="d-flex align-items-center mb-4">
+        <label class="me-3 fw-semibold">Quantity</label>
+        <input type="number" class="form-control w-25" min="1" [(ngModel)]="quantity" />
+      </div>
+      <!-- Buttons -->
+      <div class="d-flex gap-3" *ngIf="SelectedCourse?.is_in_inventory; else notInInventory">
+        <button class="btn btn-danger btn-lg" HoverDirective >Add to Cart</button>
+        <button class="btn btn-outline-dark btn-lg" >Buy Now</button>
+      </div>
+      <ng-template #notInInventory>
+        <button class="btn btn-success btn-lg"> Notify Me</button>
+      </ng-template>
+    </div>
+  </div>
+  <!-- Description -->
+  <div class="mt-4 px-4">
+    <h4>Product Description</h4>
+    <p class="text-muted">
+      {{ SelectedCourse?.longDescription }}
+    </p>
+  </div>
+
+  <hr>
+
+  <h1 class="fw-bold fs-3 px-3 mb-4">Suggeted Courses :</h1>
+
+  <!-- Suggest Courses -->
+  <div class="row g-3">
+    <div appHeighlight class="col-sm-6 col-md-4 col-lg-4 cursor-pointer d-flex" *ngFor="let Course of suggestCourses; let i = index">
+      <div class="card">
+        <img [src]="Course.image" class="card-img-top product-img mb-2" [alt]="Course.name" />
+        <div class="card-body d-flex flex-column">
+          <h3 [SetBackground]="{'textColor' : 'blue' , 'FontWeight' : '700'}" class="fs-5">{{ Course.name }}</h3>
+          <p class="flex-grow-1">{{ Course.description }}</p>
+          <div class="d-flex align-items-center justify-content-between">
+            <span [ngStyleDir]="{ fontWeight: 'bold', color : Course.is_in_inventory ? 'green' : 'red' }">
+              {{ Course.is_in_inventory ? 'Available in stock' : 'Not Available in stock' }}
+            </span>
+            <span [ngStyle]="{ fontWeight: 'bold', color: Course.price === 'Free' ? 'red' : 'black' }">
+              {{ Course.price }}
+            </span>
+          </div>
+          <div class="d-flex align-items-center gap-2 mt-3">
+            <button class="btn btn-primary">Buy</button>
+            <button class="btn btn-success" [routerLink]="'/Courses/course/' + Course.id">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

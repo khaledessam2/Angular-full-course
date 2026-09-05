@@ -1,4 +1,4 @@
-export interface ProductsInterface {
+export interface CoursesInterface {
   id: number;
   name: string;
   image: string;

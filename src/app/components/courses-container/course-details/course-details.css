@@ -1,0 +1,43 @@
+.card img {
+  height: 500px;
+  object-fit: contain;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.btn {
+  min-width: 170px;
+}
+
+input[type="number"] {
+  text-align: center;
+}
+
+
+.product-img {
+  height: 230px;
+  object-fit: cover;
+}
+
+@media (min-width:1000px) {
+  .product-img{
+    object-fit: contain;
+  }
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.heightlight-product{
+    transform: scale(1.02);
+    transition-duration: 0.1s;
+}
+
+.card img{
+  height: auto !important;
+}
+
