@@ -6,14 +6,19 @@ import { Contact } from './components/contact/contact';
 import { CoursesContainer } from './components/courses-container/courses-container';
 import { NotFound } from './shared/not-found/not-found';
 import { CourseDetails } from './components/courses-container/course-details/course-details';
+import { Courses } from './components/courses-container/courses/courses';
+import { Login } from './shared/login/login';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Courses', pathMatch: 'full' },
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
   { path: 'Home', component: Home, title: 'Home page' },
   { path: 'About', component: About, title: 'About page' },
   { path: 'Contact', component: Contact, title: 'Contact page ' },
-  { path: 'Courses', component: CoursesContainer, title: 'courses page ' },
-  { path: 'Courses/course/:id', component: CourseDetails, title: 'course Details'},
+  { path: 'Courses', component: CoursesContainer, title: 'courses page ', children : [
+    { path: '', component: Courses, title: 'courses page ' },
+    { path: 'course/:id', component: CourseDetails, title: 'course Details'},
+  ]},
+  { path : 'login' , component : Login , title: "Login" } ,
   { path: '**', component: NotFound, title: 'Page not found' },
 ];
 

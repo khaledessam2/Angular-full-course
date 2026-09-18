@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-Courses-container',
@@ -6,9 +6,4 @@ import { Component, ViewEncapsulation } from '@angular/core';
   templateUrl: './courses-container.html',
   styleUrl: './courses-container.css',
 })
-export class CoursesContainer {
-  FilterText : string = '';
-  onFilter(event : string){
-    this.FilterText = event ;
-  }
-}
+export class CoursesContainer {}

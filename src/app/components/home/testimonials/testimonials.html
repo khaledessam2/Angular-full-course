@@ -1,0 +1,18 @@
+<div class="testimonials">
+  <div class="section-header">
+    <h1>What Our Students Say</h1>
+    <p>Real feedback from people who learned with us.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <i class="fa-solid fa-quote-left quote-icon"></i>
+      <p class="quote">{{ testimonial.quote }}</p>
+      <div class="rating">
+        <i class="fa-solid fa-star" *ngFor="let star of stars(testimonial.rating)"></i>
+      </div>
+      <h4 class="name">{{ testimonial.name }}</h4>
+      <span class="role">{{ testimonial.role }}</span>
+    </div>
+  </div>
+</div>

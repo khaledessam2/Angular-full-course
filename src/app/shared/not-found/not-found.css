@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 300px);
+}
+
+.display-1 {
+  color: var(--color-primary) !important;
+  text-shadow: 0 10px 30px rgba(230, 57, 70, 0.25);
+}
+
+.btn-dark {
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition);
+}
+
+.btn-dark:hover {
+  transform: translateY(-2px);
+}

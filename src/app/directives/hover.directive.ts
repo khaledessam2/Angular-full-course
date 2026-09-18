@@ -15,7 +15,7 @@ export class HoverDirective{
   @HostBinding('style.color') color : string = 'red'
 
   @HostListener('mouseenter') onMouseEnter(){
-    this.renderer.setStyle(this.element.nativeElement , 'transform' , 'scale(1.05)');
+    this.renderer.setStyle(this.element.nativeElement , 'transform' , 'scale(1.01)');
     this.backgroundColor = 'red';
     this.color = 'white';
     this.renderer.setStyle(this.element.nativeElement , 'transition-duration' , '0.4s');

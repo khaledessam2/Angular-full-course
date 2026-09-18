@@ -1,21 +1,95 @@
-.card img {
-  height: 500px;
+.details-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.details-img-wrap {
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.details-img-wrap img {
+  height: 420px;
   object-fit: contain;
-  padding: 20px;
+  padding: 24px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
 h2 {
   font-size: 2rem;
+  font-weight: 700;
+}
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff4e5;
+  color: #e8a415;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.price-display {
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .btn {
   min-width: 170px;
+  border-radius: var(--radius-sm);
 }
 
-input[type="number"] {
+.btn-buy,
+.btn-details {
+  font-weight: 500;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-buy {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: none;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
+}
+
+.btn-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+}
+
+.btn-details {
+  background: #fff;
+  border: 1.5px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.btn-details:hover {
+  background: var(--color-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.qty-input {
   text-align: center;
+  border-radius: var(--radius-sm);
 }
-
 
 .product-img {
   height: 230px;
@@ -32,12 +106,54 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.course-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.course-img-wrap {
+  position: relative;
+}
+
+.price-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.course-title {
+  margin-bottom: 8px;
+}
+
+.course-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  width: fit-content;
+}
+
 .heightlight-product{
-    transform: scale(1.02);
-    transition-duration: 0.1s;
+    transform: scale(1.01);
+    transition-duration: 0.3s;
 }
-
-.card img{
-  height: auto !important;
-}
-

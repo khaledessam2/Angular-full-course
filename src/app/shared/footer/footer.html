@@ -1,24 +1,33 @@
-<footer class="bg-dark text-light pt-5 pb-3 mt-5">
+<footer class="app-footer pt-5 pb-3 mt-5">
   <div class="container">
     <div class="row">
 
       <!-- Company -->
       <div class="col-md-4 mb-4">
-        <h4 class="fw-bold">MyStore</h4>
+        <h4 class="fw-bold d-flex align-items-center gap-2">
+          <i class="fa-solid fa-graduation-cap"></i>
+          MyStore
+        </h4>
         <p class="text-secondary">
           We provide high-quality products at affordable prices with fast delivery
           and excellent customer service.
         </p>
+        <div class="d-flex gap-2 social-links mt-3">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
       </div>
 
       <!-- Quick Links -->
       <div class="col-md-2 mb-4">
         <h5 class="fw-bold">Links</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-decoration-none text-secondary">Home</a></li>
-          <li><a href="#" class="text-decoration-none text-secondary">Products</a></li>
-          <li><a href="#" class="text-decoration-none text-secondary">About</a></li>
-          <li><a href="#" class="text-decoration-none text-secondary">Contact</a></li>
+          <li><a routerLink="/Home" class="text-decoration-none text-secondary">Home</a></li>
+          <li><a routerLink="/Courses" class="text-decoration-none text-secondary">Courses</a></li>
+          <li><a routerLink="/About" class="text-decoration-none text-secondary">About</a></li>
+          <li><a routerLink="/Contact" class="text-decoration-none text-secondary">Contact</a></li>
         </ul>
       </div>
 
@@ -36,9 +45,9 @@
       <!-- Contact -->
       <div class="col-md-3 mb-4">
         <h5 class="fw-bold">Contact</h5>
-        <p class="text-secondary mb-1">📧 info@example.com</p>
-        <p class="text-secondary mb-1">📞 +20 100 000 0000</p>
-        <p class="text-secondary">📍 Alexandria, Egypt</p>
+        <p class="text-secondary mb-2"><i class="fa-solid fa-envelope me-2"></i>info@example.com</p>
+        <p class="text-secondary mb-2"><i class="fa-solid fa-phone me-2"></i>+20 100 000 0000</p>
+        <p class="text-secondary"><i class="fa-solid fa-location-dot me-2"></i>Alexandria, Egypt</p>
       </div>
 
     </div>

@@ -19,17 +19,15 @@ export class CourseDetails implements OnInit , OnDestroy{
   quantity = 1;
   suggestCourses : CoursesInterface[] = [] ;
 
-
   ngOnInit(): void {
     this.ParamMapObservable = this.ActivatedRoute.params.subscribe({
       next:(value)=> {
-          this.courseId = +value["id"];
+          this.courseId = + value["id"];
           this.SelectedCourse = this.CourseServices.GetCoureses().find((course) => course.id === this.courseId ) ;
           this.suggestCourses = this.CourseServices.GetCoureses().filter((course) => course.id !== this.courseId) ;
       },
     })
   }
-
 
   ngOnDestroy(): void {
     this.ParamMapObservable.unsubscribe() ;

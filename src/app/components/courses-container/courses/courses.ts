@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CoursesInterface } from '../../../models/Courses.interface';
 import { CoursesService } from '../../../services/courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,21 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './courses.html',
   styleUrl: './courses.css',
 })
-export class Courses implements OnChanges {
+export class Courses implements OnInit {
 
   private CourseService : CoursesService = inject(CoursesService) ;
   private Router : Router = inject(Router) ;
   private ActivatedRoute : ActivatedRoute = inject(ActivatedRoute)
-  courses : CoursesInterface[] = []
-
-
-  constructor(){
-    this.courses = this.CourseService.GetCoureses() ;
-  }
+  courses : CoursesInterface[] = [] ;
+  QuerySearch : string | null = null ;
 
   // Filter Functionality
   filterCourses: CoursesInterface[] = [...this.courses];
-  @Input() FilterTextInput: string = '';
   FilterPrice: string = 'all';
 
   // Counters shown on the filter buttons
@@ -31,18 +26,28 @@ export class Courses implements OnChanges {
   FreeCount: number = 0;
   PremiumCount: number = 0;
 
+  constructor(){
+    this.courses = this.CourseService.GetCoureses() ;
+  }
+
+  ngOnInit(): void {
+    this.ActivatedRoute.queryParamMap.subscribe({
+      next:(value)=>{
+        this.QuerySearch = value.get('search') ;
+        this.ApplyFilter();
+      }
+    })
+  }
+
+
   OnFilterChanged(value: string) {
     this.FilterPrice = value;
     this.ApplyFilter();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.ApplyFilter();
-  }
-
   ApplyFilter() {
     // Filter based On name
-    const text = this.FilterTextInput.trim().toLowerCase();
+    const text = (this.QuerySearch ?? '').trim().toLowerCase();
     const searchedProducts = text ? this.courses.filter((p) => p.name.toLowerCase().includes(text)) : [...this.courses];
 
     // Counters always reflect the search result, not the price filter
@@ -62,7 +67,8 @@ export class Courses implements OnChanges {
   }
 
   GoToDetails(id : number){
-    // this.Router.navigateByUrl(`Courses/course/${id}`) ;
-    this.Router.navigate(['course' , id] , {relativeTo : this.ActivatedRoute }) ;
+    // this.Router.navigateByUrl(`Courses/course/${id}`) ; //Absolute
+    // this.Router.navigate(['course' , id] , {relativeTo : this.ActivatedRoute }) ; // relative
+    this.Router.navigate(['Courses' , 'course' , id]) ; // Absolute
   }
 }

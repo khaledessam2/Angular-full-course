@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   selector : "app-header" ,
   standalone : false ,
   templateUrl : './header.component.html' ,
-  styleUrls : []
+  styleUrls : ['./header.component.css']
 })
 
 export class HeaderComponent{
@@ -17,5 +17,9 @@ export class HeaderComponent{
     this.router.navigateByUrl("/Courses") ;
     // if you want to use relative Route use this method
     // this.router.navigate(['Courses'] , {relativeTo: this.ActivatedRoute}) ;
+  }
+
+  LogOut(){
+    this.router.navigate(['login'] , {queryParams : {logOut : true}}) ;
   }
 }

@@ -1,0 +1,75 @@
+.app-navbar {
+  background: linear-gradient(135deg, var(--color-dark), var(--color-dark-soft) 60%, #1a1a1d);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navbar-brand i {
+  color: var(--color-primary);
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  padding: 0.4rem 0.2rem !important;
+  margin: 0 0.6rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: var(--color-primary);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #fff;
+}
+
+.section-links a {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition);
+}
+
+.section-links a:hover {
+  color: var(--color-primary);
+}
+
+.auth-buttons .btn {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.auth-buttons .btn:hover {
+  transform: translateY(-1px);
+}
+
+.auth-buttons .btn-danger {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: none;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.35);
+}
