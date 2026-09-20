@@ -25,7 +25,7 @@
           {{ Course.is_in_inventory ? 'In Stock' : 'Out of Stock' }}
         </span>
         <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-buy flex-grow-1"><i class="fa-solid fa-cart-shopping me-1"></i>Buy</button>
+          <button class="btn btn-buy flex-grow-1" routerLink="checkout"><i class="fa-solid fa-cart-shopping me-1"></i>Buy</button>
           <button class="btn btn-details flex-grow-1" (click)="GoToDetails(Course.id)">Details</button>
         </div>
       </div>

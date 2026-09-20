@@ -33,7 +33,7 @@
       <!-- Buttons -->
       <div class="d-flex gap-3" *ngIf="SelectedCourse?.is_in_inventory; else notInInventory">
         <button class="btn btn-buy btn-lg" HoverDirective ><i class="fa-solid fa-cart-shopping me-2"></i>Add to Cart</button>
-        <button class="btn btn-details btn-lg" >Buy Now</button>
+        <button class="btn btn-details btn-lg" routerLink="/Courses/checkout" >Buy Now</button>
       </div>
       <ng-template #notInInventory>
         <button class="btn btn-buy btn-lg"><i class="fa-solid fa-bell me-2"></i>Notify Me</button>

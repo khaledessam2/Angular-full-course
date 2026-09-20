@@ -1,0 +1,68 @@
+.checkout-panel {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+}
+
+.checkout-input {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.checkout-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+.card-icons {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.checkout-select {
+  min-width: 110px;
+  padding-right: 32px;
+}
+
+.cvv-input {
+  max-width: 140px;
+}
+
+.cvv-link {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.btn-buy-now {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 6px 16px rgba(230, 57, 70, 0.3);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-buy-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+  color: #fff;
+}
+
+.summary-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.total-row {
+  font-size: 1.15rem;
+  color: var(--color-dark);
+}
