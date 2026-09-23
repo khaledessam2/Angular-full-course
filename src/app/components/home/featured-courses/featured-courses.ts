@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoursesInterface } from '../../../models/Courses.interface';
 import { CoursesService } from '../../../services/courses.service';
@@ -13,7 +13,9 @@ export class FeaturedCourses {
   private CoursesService: CoursesService = inject(CoursesService);
   private Router: Router = inject(Router);
 
-  courses: CoursesInterface[] = this.CoursesService.GetCoureses().slice(0, 4);
+  protected courses = signal<CoursesInterface[]>(
+    this.CoursesService.GetCoureses().slice(0, 4)
+  ).asReadonly()
 
   stars(rating: number): number[] {
     return Array(Math.round(rating)).fill(0);

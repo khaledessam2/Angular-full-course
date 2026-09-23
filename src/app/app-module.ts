@@ -28,6 +28,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { RouterModule, Routes } from '@angular/router';
 import { Login } from './shared/login/login';
 import { Checkout } from './components/checkout/checkout';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { Checkout } from './components/checkout/checkout';
     Checkout,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, ReactiveFormsModule],
+  providers:[provideHttpClient()] ,
   bootstrap: [App],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface FaqItem {
   question: string;
@@ -12,7 +12,7 @@ interface FaqItem {
   styleUrl: './faq.css',
 })
 export class Faq {
-  faqs: FaqItem[] = [
+  faqs = signal<FaqItem[]>([
     {
       question: 'Do I need any prior experience to start?',
       answer:
@@ -33,11 +33,12 @@ export class Faq {
       answer:
         'Yes, we offer a refund within 14 days of purchase if you are not satisfied with the course content.',
     },
-  ];
+  ]).asReadonly()
 
-  activeIndex: number | null = 0;
+  activeIndex = signal<number | null>(0);
 
   toggle(index: number) {
-    this.activeIndex = this.activeIndex === index ? null : index;
+    // this.activeIndex = this.activeIndex === index ? null : index;
+    this.activeIndex.update((current) => (current === index ? null : index));
   }
 }

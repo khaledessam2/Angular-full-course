@@ -71,33 +71,33 @@
     <!-- Order Summary -->
     <div class="col-lg-5">
       <div class="checkout-panel h-100">
-        <h4 class="fw-bold mb-4">Complete Modern JavaScript Course</h4>
+        <h4 class="fw-bold mb-4">{{course()?.name}}</h4>
 
         <div class="d-flex justify-content-between summary-row">
-          <span class="text-muted">449.50 x 1 Course</span>
-          <span>449.00 USD</span>
+          <span class="text-muted">Price</span>
+          <span>{{course()?.price}} {{course()?.price === 'Free' ? '' : '$'}}</span>
         </div>
 
         <div class="d-flex justify-content-between summary-row">
           <span class="text-muted">Discount</span>
-          <span>0.00 USD</span>
+          <span>0.00$</span>
         </div>
 
         <div class="d-flex justify-content-between summary-row">
           <span class="text-muted">Subtotal</span>
-          <span>449.00 USD</span>
+          <span>{{`${course()?.price}` }}  {{course()?.price === 'Free' ? '' : '$'}}</span>
         </div>
 
         <div class="d-flex justify-content-between summary-row">
           <span class="text-muted">Tax</span>
-          <span>47.41 USD</span>
+          <span>47.41$</span>
         </div>
 
         <hr />
 
         <div class="d-flex justify-content-between total-row">
           <span class="fw-bold">Total</span>
-          <span class="fw-bold">546.41 USD</span>
+          <span class="fw-bold">{{ course()?.price === 'Free' ? 47.41 : ((+ (course()?.price ?? 0)) + 47.41) }}$</span>
         </div>
       </div>
     </div>

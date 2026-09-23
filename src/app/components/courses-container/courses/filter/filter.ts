@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -7,12 +7,12 @@ import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
   styleUrl: './filter.css',
 })
 export class Filter {
-  @Output()SelectedRadioButton : EventEmitter<string> = new EventEmitter<string>() ;
-  @Input() All : number = 0 ;
-  @Input() Free : number = 0 ;
-  @Input() premium : number = 0 ;
-
+  // two-way bound selected filter : [(Selected)]="..."
+  Selected = model<string>('all');
+  All = input<number>(0);
+  Free = input<number>(0);
+  premium = input<number>(0);
   ChangeSelectedRadioButton(event : Event){
-    this.SelectedRadioButton.emit((event.target as HTMLInputElement).value)
+    this.Selected.set((event.target as HTMLInputElement).value)
   }
 }

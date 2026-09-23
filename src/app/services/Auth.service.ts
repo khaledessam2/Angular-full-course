@@ -1,4 +1,4 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { User } from "../models/Users";
 import { UserServices } from "./user.service";
 
@@ -8,20 +8,20 @@ import { UserServices } from "./user.service";
 
 export class AuthServices{
   private UserServices : UserServices = inject(UserServices);
-  isLogged : boolean = false ;
+  isLogged = signal<boolean>(false) ;
 
   Login(userName : string , password : string): User | undefined{
-    let user = this.UserServices.Users.find((u)=> userName === u.userName && password === u.password );
-    user === undefined ? this.isLogged = false : this.isLogged= true ;
+    let user = this.UserServices.Users().find((u)=> userName === u.userName && password === u.password );
+    user === undefined ? this.isLogged.set(false) : this.isLogged.set(true) ;
     return user ;
   }
 
   LogOut() : void{
-    this.isLogged = false ;
+    this.isLogged.set(false);
   }
 
   isAuthenticated(): boolean{
-    return this.isLogged ;
+    return this.isLogged() ;
   }
 
 

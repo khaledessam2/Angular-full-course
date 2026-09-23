@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { CoursesInterface } from "../models/Courses.interface";
 
 @Injectable({
@@ -6,7 +6,7 @@ import { CoursesInterface } from "../models/Courses.interface";
 })
 
 export class CoursesService{
-    private courses : CoursesInterface[] = [
+    private courses = signal<CoursesInterface[]>(    [
       {
         id: 1,
         name: 'Angular',
@@ -82,10 +82,11 @@ export class CoursesService{
         longDescription:
           'Learn Bootstrap 5 grid system, utilities, components, forms, modals, cards, and responsive layouts.'
       }
-    ];
+    ]).asReadonly()
+
 
     GetCoureses() : CoursesInterface[] {
-      return this.courses;
+      return this.courses();
     }
 
 

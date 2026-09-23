@@ -5,7 +5,7 @@
   </div>
 
   <div class="courses-grid">
-    <div class="course-card" *ngFor="let course of courses" (click)="GoToDetails(course.id)">
+    <div class="course-card" *ngFor="let course of courses()" (click)="GoToDetails(course.id)">
       <div class="course-img-wrap">
         <img [src]="course.image" [alt]="course.name" class="course-img" />
         <span class="price-badge" [ngStyle]="{ background: course.price === 'Free' ? 'var(--color-primary)' : 'var(--color-dark)' }">

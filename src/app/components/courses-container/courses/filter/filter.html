@@ -6,14 +6,14 @@
     </div>
 
     <div class="btn-group" role="group">
-      <input type="radio" class="btn-check" value="all" name="Filter" id="all" checked (change)="ChangeSelectedRadioButton($event)" />
-      <label class="btn btn-outline-danger" for="all"> All Courses ({{All}}) </label>
+      <input type="radio" class="btn-check" value="all" name="Filter" id="all" [checked]="Selected() === 'all'" (change)="ChangeSelectedRadioButton($event)" />
+      <label class="btn btn-outline-danger" for="all"> All Courses ({{All()}}) </label>
 
-      <input type="radio" class="btn-check" value="free" name="Filter" id="free"  (change)="ChangeSelectedRadioButton($event)" />
-      <label class="btn btn-outline-danger" for="free"> Free Courses ({{Free}}) </label>
+      <input type="radio" class="btn-check" value="free" name="Filter" id="free" [checked]="Selected() === 'free'" (change)="ChangeSelectedRadioButton($event)" />
+      <label class="btn btn-outline-danger" for="free"> Free Courses ({{Free()}}) </label>
 
-      <input type="radio" class="btn-check" value="premium" name="Filter" id="premium" (change)="ChangeSelectedRadioButton($event)"  />
-      <label class="btn btn-outline-danger" for="premium"> Premium Courses ({{premium}}) </label>
+      <input type="radio" class="btn-check" value="premium" name="Filter" id="premium" [checked]="Selected() === 'premium'" (change)="ChangeSelectedRadioButton($event)"  />
+      <label class="btn btn-outline-danger" for="premium"> Premium Courses ({{premium()}}) </label>
     </div>
   </div>
 </div>

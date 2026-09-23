@@ -1,4 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,11 +12,21 @@ export class Home implements OnInit {
   private ActivatedRoute : ActivatedRoute = inject(ActivatedRoute) ;
   ngOnInit(): void {
     // fragment is return an Observable ;
-    this.ActivatedRoute.fragment.subscribe({
-      next:(value : string | null)=> {
-        this.jumpToSection(value) ;
-      },
-    })
+    // this.ActivatedRoute.fragment.subscribe({
+    //   next:(value : string | null)=> {
+    //     this.jumpToSection(value) ;
+    //   },
+    // })
+  }
+
+  fragment = toSignal(this.ActivatedRoute.fragment, {
+    initialValue: null
+  });
+
+  constructor() {
+    effect(() => {
+      this.jumpToSection(this.fragment());
+    });
   }
 
   jumpToSection(section : string | null){

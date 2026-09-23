@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 interface Feature {
   icon: string;
@@ -13,7 +13,7 @@ interface Feature {
   styleUrl: './why-choose-us.css',
 })
 export class WhyChooseUs {
-  features: Feature[] = [
+  protected features = signal<Feature[]>( [
     {
       icon: 'fa-solid fa-chalkboard-user',
       title: 'Expert Instructors',
@@ -34,5 +34,5 @@ export class WhyChooseUs {
       title: 'Certificates',
       description: 'Earn a certificate of completion for every course to showcase your new skills.',
     },
-  ];
+  ]).asReadonly()
 }

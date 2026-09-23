@@ -32,7 +32,13 @@
             </div>
         </div>
         <div class="about-us-founder">
-            <img src="/images/photo_2026-06-26_19-54-44.jpg" alt="Khaled Essam">
+          <div class="image-container">
+            <img [src]="imageUrl()" alt="Khaled Essam">
+            <div class="icon" (click)="uploadImage()">
+              <i class="fa-solid fa-download"></i>
+            </div>
+            <input #input type="file"  (change)="onImageSelected($event)" >
+          </div>
             <h2>Khaled Essam</h2>
             <p>Front End Developer - Buzzle Company</p>
         </div>

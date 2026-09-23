@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IDeActivateComponent } from '../../guards/Authquard.service';
 
@@ -10,7 +10,7 @@ import { IDeActivateComponent } from '../../guards/Authquard.service';
 })
 export class Contact implements OnInit , IDeActivateComponent {
   contactForm !: FormGroup ;
-  isSubmitted : boolean = false ;
+  isSubmitted = signal<boolean>(false) ;
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
@@ -25,14 +25,14 @@ export class Contact implements OnInit , IDeActivateComponent {
     if(this.contactForm.invalid){
       this.contactForm.markAllAsTouched() ;
     } ;
-    this.isSubmitted = true ;
+    this.isSubmitted.set(true) ;
     this.contactForm.reset() ;
   }
 
   canExit() {
     const { fname, lname, country, subject } = this.contactForm.controls;
 
-    if ((fname.value || lname.value || country.value || subject.value) && !this.isSubmitted) {
+    if ((fname.value || lname.value || country.value || subject.value) && !this.isSubmitted()) {
       return confirm("there is changed not saved , Are you sure you want to Exit") ;
     }
 

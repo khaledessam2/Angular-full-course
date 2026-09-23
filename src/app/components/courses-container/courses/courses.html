@@ -1,15 +1,15 @@
 <app-filter
-  [All]="AllCount"
-  [Free]="FreeCount"
-  [premium]="PremiumCount"
-  (SelectedRadioButton)="OnFilterChanged($event)"
+  [All]="AllCount()"
+  [Free]="FreeCount()"
+  [premium]="PremiumCount()"
+  [(Selected)]="FilterPrice"
 ></app-filter>
 
-<p *ngIf="filterCourses.length === 0" class="text-center text-muted my-4">
+<p *ngIf="filterCourses().length === 0" class="text-center text-muted my-4">
   No courses match your filter.
 </p>
 <div class="row g-3">
-  <div appHeighlight class="col-sm-6 col-md-4 col-lg-3 cursor-pointer d-flex" *ngFor="let Course of filterCourses; let i = index">
+  <div appHeighlight class="col-sm-6 col-md-4 col-lg-3 cursor-pointer d-flex" *ngFor="let Course of filterCourses(); let i = index">
     <div class="card course-card h-80">
       <div class="course-img-wrap">
         <img [src]="Course.image" class="card-img-top product-img" [alt]="Course.name" />
@@ -25,7 +25,7 @@
           {{ Course.is_in_inventory ? 'In Stock' : 'Out of Stock' }}
         </span>
         <div class="d-flex align-items-center gap-2">
-          <button class="btn btn-buy flex-grow-1" routerLink="checkout"><i class="fa-solid fa-cart-shopping me-1"></i>Buy</button>
+          <button class="btn btn-buy flex-grow-1" (click)="GoToCheckout(Course)"><i class="fa-solid fa-cart-shopping me-1"></i>Buy</button>
           <button class="btn btn-details flex-grow-1" (click)="GoToDetails(Course.id)">Details</button>
         </div>
       </div>

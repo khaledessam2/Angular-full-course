@@ -5,12 +5,12 @@
   </div>
 
   <div class="faq-list">
-    <div class="faq-item" *ngFor="let faq of faqs; let i = index" [class.active]="activeIndex === i">
+    <div class="faq-item" *ngFor="let faq of faqs(); let i = index" [class.active]="activeIndex() === i">
       <button class="faq-question" (click)="toggle(i)">
         {{ faq.question }}
-        <i class="fa-solid" [ngClass]="activeIndex === i ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        <i class="fa-solid" [ngClass]="activeIndex() === i ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
       </button>
-      <div class="faq-answer" *ngIf="activeIndex === i">
+      <div class="faq-answer" *ngIf="activeIndex() === i">
         <p>{{ faq.answer }}</p>
       </div>
     </div>

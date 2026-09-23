@@ -18,16 +18,18 @@ const routes: Routes = [
   { path: 'About', component: About, title: 'About page' },
   { path: 'Contact', component: Contact, title: 'Contact page' , canDeactivate:[CanDeactivation] },
   { path: 'Courses', component: Courses, title: 'courses page' },
-  { path: 'Courses', canActivateChild: [CanActivateChildFn] , children : [
+  { path: 'Courses' , children : [
     { path: 'course/:id', component: CourseDetails, title: 'course Details'},
-    { path: 'checkout', component: Checkout , title:'Checkout Page' }
+    { path: 'checkout', component: Checkout , title:'Checkout Page' , canActivate:[CanActivatefn] } //canActivate:[CanActivatefn]
   ]},
   { path : 'login' , component : Login , title: "Login" } ,
   { path: '**', component: NotFound, title: 'Page not found' },
 ];
 
+const routerConfig = RouterModule.forRoot(routes);
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [routerConfig],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
